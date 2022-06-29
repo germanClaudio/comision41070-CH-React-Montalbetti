@@ -10,15 +10,15 @@ import Items from './components/paginas/Items';
 function App() {
   const styleApp = {backgroundColor: '#d2d4e899', fontSize: '1.25rem'}
 
-  const warning = () => {
-    alert('App under construction! Be patience....')
-  }
+  // const warning = () => {
+  //   alert('App under construction! Be patience....')
+  // }
 
   return (
     <div 
         className="App"
         style={ styleApp }
-        //onClick={ warning }  
+        // onClick={ warning }  
     >
       <Router>
         <NavBar />
