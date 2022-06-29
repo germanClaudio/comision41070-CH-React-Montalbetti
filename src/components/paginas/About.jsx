@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
 
-    const styleAbout = {backgroundImage: "radial-gradient(circle, #f2c6c6, #b0edea, #ad9284)",
+    const styleAbout = {backgroundImage: "radial-gradient(circle, #74EBD5, #9FACE6, #b2fefa)",
                         fontSize: '1rem',
                         paddingTop: '25%',
                         paddingBottom: '50%'
