@@ -2,7 +2,11 @@ import React from 'react'
 
 const About = () => {
 
-    const styleAbout = {backgroundColor: '#90def099', fontSize: '1rem', paddingTop: '25%', paddingBottom: '50%'}
+    const styleAbout = {backgroundImage: "radial-gradient(circle, #f2c6c6, #b0edea, #ad9284)",
+                        fontSize: '1rem',
+                        paddingTop: '25%',
+                        paddingBottom: '50%'
+                    }
 
   return (
     <div

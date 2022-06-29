@@ -29,22 +29,32 @@ code {
 
 .navbar .navbar-nav .nav-item .nav-link {
   color: #10263b;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.75s ease-in-out;
 }
 
 .navbar .navbar-nav .nav-item .nav-link:hover {
-  background-image: linear-gradient(180deg, transparent 90%, #90def0 100%);
-  transition: all 0.5s ease-in-out;
+  background-color: linear-gradient(180deg, transparent 90%, #076323 100%);
+  color: #076323;
+  transition: all 0.75s ease-out;
 }
 
 .navbar .navbar-nav .nav-item:hover {
-  background-image: linear-gradient(180deg, transparent 90%, #90def0 100%);
-  border-bottom: 1px solid #ffffff;
+  background-image: linear-gradient(180deg, transparent 90%, #076323 100%);
   margin-bottom: -1px;
 }
 
 .navbar .navbar-nav .nav-item:hover i {
-  color: #1ac;
+  color: #076323;
   transform: scale(1.05);
-  transition: all 0.5s ease-in-out;
+  translate: -0.4rem;
+  transition: all 0.75s ease-in-out;
 }
+
+.navbar .navbar-nav .nav-item i {
+  translate: 0rem;
+  transition: all 0.75s ease-in-out;
+}
+
+.bg-light {
+  background-image: linear-gradient(to right, #f8f8f8 20%, #bbbbbb 45% ,#5b97be 65%, #706eff);
+}  
