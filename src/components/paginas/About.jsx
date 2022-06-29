@@ -10,7 +10,9 @@ const About = () => {
     >
         <h1>This is the <strong>About</strong> Page</h1>
         <hr/>
-        <h2>Page under construction.<br/>Please, be patience our you can start coding with me... for free</h2>
+        <h2>Page under construction!</h2>
+        <img src="./src/underConstruction.jpg" alt="Underconstruction" width="150" height="139" title="Under Construction"/>
+        <h3>Please, be patience our you can start coding with me... for free</h3>
     </div>
   )
 }
