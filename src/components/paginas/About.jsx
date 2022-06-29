@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
 
-    const styleAbout = {backgroundColor: '#a6a9f999', fontSize: '1rem', paddingTop: '25%', paddingBottom: '50%'}
+    const styleAbout = {backgroundColor: '#90def099', fontSize: '1rem', paddingTop: '25%', paddingBottom: '50%'}
 
   return (
     <div
