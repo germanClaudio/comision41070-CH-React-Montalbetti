@@ -58,4 +58,17 @@ code {
 .bg-light {
   background-image: linear-gradient(to right, #f8f8f8 20%, #bbbbbb 45% ,#67aad6 65%, #9a98f7);
   border-bottom: #10263b 1px solid;
-}  
+}
+
+.logoMarca {
+  /* border-radius: .4rem; */
+  /* box-shadow: #10263b 1px 1px 1px; */
+  transition: all .75s ease-in-out;
+}
+
+.logoMarca:hover {
+  border-radius: .4rem;
+  box-shadow: #10263b 3px 2px 5px;
+  scale: 1.04;
+  transition: all .75s ease-in-out;
+}
