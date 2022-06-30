@@ -61,8 +61,8 @@ code {
 }
 
 .logoMarca {
-  /* border-radius: .4rem; */
-  /* box-shadow: #10263b 1px 1px 1px; */
+  border-radius: .4rem; 
+  box-shadow: #8d848a -3px -2px 4px;
   transition: all .75s ease-in-out;
 }
 
