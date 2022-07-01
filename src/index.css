@@ -55,20 +55,27 @@ code {
   transition: all .75s ease-in-out;
 }
 
-.bg-light {
-  background-image: linear-gradient(to right, #f8f8f8 20%, #bbbbbb 45% ,#67aad6 65%, #9a98f7);
+.navBackground {
+  background-image: linear-gradient(to right, #f8f8f8 20%, #bbbbbb 45% ,#67aad6 65%, #8280d1);
   border-bottom: #10263b 1px solid;
 }
 
 .logoMarca {
-  border-radius: .4rem; 
+  padding: 2px;
+  border-radius: .25rem; 
   box-shadow: #8d848a -3px -2px 4px;
-  transition: all .75s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 .logoMarca:hover {
-  border-radius: .4rem;
-  box-shadow: #10263b 3px 2px 5px;
+  border-radius: .25rem;
+  box-shadow: #404346 3px 2px 5px;
   scale: 1.04;
-  transition: all .75s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.imgHomePage {
+  border-radius: .75rem;
+  box-shadow: #242123 6px 6px 10px;
+  margin-bottom: 1.5rem;
 }

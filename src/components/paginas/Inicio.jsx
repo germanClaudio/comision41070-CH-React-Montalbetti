@@ -12,7 +12,7 @@ const Inicio = () => {
     <div
         style={ styleHome }
     >
-        <img src="./src/logoLaChauffer.png" alt="Logo Perfumes" width="250" height="170" title="La Chauffer"/>
+        <img className="imgHomePage" src="./src/logoLaChauffer.png" alt="Logo Perfumes" width="250" height="170" title="La Chauffer"/>
         <h1>This is the <strong>Home</strong> Page</h1>
         <hr/>
         <h2>Page under construction!</h2>
