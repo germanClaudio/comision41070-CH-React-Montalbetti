@@ -79,3 +79,7 @@ code {
   box-shadow: #242123 6px 6px 10px;
   margin-bottom: 1.5rem;
 }
+
+.btn-circle {
+  border-radius: 50%;
+}

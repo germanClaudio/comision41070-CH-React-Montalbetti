@@ -5,7 +5,7 @@ const Items = (props) => {
 
     const styleItems = {backgroundImage: "radial-gradient(circle, #eeaeca, #94bbe9)",
                         fontSize: '1rem',
-                        paddingTop: '25%',
+                        paddingTop: '20%',
                         paddingBottom: '50%'
                     }
     

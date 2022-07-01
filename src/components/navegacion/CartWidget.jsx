@@ -22,13 +22,13 @@ const CartWidget = () => {
     counter === 0 ? setCounter(counter) : setCounter(counter - 1)
   }
 
-  
+
   return (
     <div className="nav-item my-auto mx-3 px-3">
-      <button className="btn btn-danger btn-sm me-2"
+      <button className="btn btn-danger btn-sm me-2 btn-circle"
         onClick={handleClick2}
       >
-        <i className="fas fa-minus-circle"></i>
+        <i className="fas fa-minus"></i>
       </button>
 
       <div className="badge rounded-pill bg-dark mx-auto position-relative">
@@ -39,10 +39,10 @@ const CartWidget = () => {
         </i>
       </div>
 
-      <button className="btn btn-success btn-sm ms-2"
+      <button className="btn btn-success btn-sm ms-2 btn-circle"
         onClick={handleClick1}
       >
-        <i className="fas fa-plus-circle"></i>
+        <i className="fas fa-plus"></i>
       </button>
     </div>
   )

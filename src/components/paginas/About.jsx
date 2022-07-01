@@ -4,7 +4,7 @@ const About = (props) => {
 
     const styleAbout = {backgroundImage: "radial-gradient(circle, #74EBD5, #9FACE6, #b2fefa)",
                         fontSize: '1rem',
-                        paddingTop: '25%',
+                        paddingTop: '20%',
                         paddingBottom: '50%'
                     }
 
