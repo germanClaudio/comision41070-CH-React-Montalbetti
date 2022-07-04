@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 
-// const warningMessage = () => {
-//    alert("I've told you...This App is under construction!\nPlease, be patience....")
-// }
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActions, CardActionArea } from '@mui/material';
 
 const ItemListContainer = () => {
 
@@ -20,18 +22,51 @@ const ItemListContainer = () => {
     }
   }
 
+  const btnClickMinus = () => {
+    contador === 0 ? setContador(contador) : setContador(contador - 1)
+  }
+
   return (
     <>
-        <button className="btn btn-primary my-3"
-                // onClick={ warningMessage }
+        <button className="btn btn-success my-3"
                 onClick={ btnClick }
         >
           Click me!
         </button>
         <br/>
-        <div className="d-inline-flex alert alert-secondary" role="alert">
-           Contador: { contador } / 10
-        </div>
+        <Card
+              sx={{ maxWidth: 280,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    mx: "auto",
+              }}
+              elevation={24}>
+
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="140"
+              image="./src/logoLaChauffer.png"
+              alt="Logo"
+            />
+            <hr/>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Contador: { contador }
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Limite: { limite }
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+
+          <CardActions>
+            <Button size="small" color="primary" onClick={btnClickMinus}>
+              Click me to reduce counter figure!
+            </Button>
+          </CardActions>
+
+        </Card>
     </>
   )
 }

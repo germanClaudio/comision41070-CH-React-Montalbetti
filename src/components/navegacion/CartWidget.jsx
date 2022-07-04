@@ -1,4 +1,3 @@
-// import React from 'react'
 import React, { useState } from "react";
 
 const CartWidget = () => {
@@ -7,14 +6,12 @@ const CartWidget = () => {
   const stock = 10
 
   const handleClick1 = () => {
-
     if (counter === stock) {
       alert('No hay mas stock disponible. El limite es: ' + stock)
     }
 
     else if (counter >= 0) {
       setCounter(counter + 1)
-
     }
   }
 
@@ -25,7 +22,7 @@ const CartWidget = () => {
 
   return (
     <div className="nav-item my-auto mx-3 px-3">
-      <button className="btn btn-danger btn-sm me-2 btn-circle"
+      <button className="btn btn-danger btn-sm me-2 btn-circle-minus"
         onClick={handleClick2}
       >
         <i className="fas fa-minus"></i>
@@ -39,7 +36,7 @@ const CartWidget = () => {
         </i>
       </div>
 
-      <button className="btn btn-success btn-sm ms-2 btn-circle"
+      <button className="btn btn-success btn-sm ms-2 btn-circle-plus"
         onClick={handleClick1}
       >
         <i className="fas fa-plus"></i>

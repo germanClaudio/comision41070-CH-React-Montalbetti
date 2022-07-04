@@ -80,6 +80,16 @@ code {
   margin-bottom: 1.5rem;
 }
 
-.btn-circle {
+.btn-circle-minus {
   border-radius: 50%;
+  background-color: #b905b0;
+  border: none;
+  box-shadow: #000 2px 2px 5px
+}
+
+.btn-circle-plus {
+  border-radius: 50%;
+  background-color: #4caf50;
+  border: none;
+  box-shadow: #000 2px 2px 5px
 }
