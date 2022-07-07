@@ -16,7 +16,7 @@ const Items = (props) => {
     >
         <h1><strong>{props.greeting}</strong></h1>
         <hr/>
-        <h2>Page under construction!</h2>
+        {/* <h2>Page under construction!</h2> */}
         <ItemListContainer />
         <br/>
         {/* <img src="./src/underConstruction.jpg" alt="Under Construction" width="150" height="139" title="Under Construction"/> */}

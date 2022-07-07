@@ -1,46 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActions, CardActionArea, Badge, Chip, ButtonGroup, Fab } from '@mui/material';
+import { Button, CardActions, CardActionArea, Badge, Chip, ButtonGroup, Fab, CardHeader } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove'
 import Swal from 'sweetalert2';
 import {Link} from 'react-router-dom'
 
+
 const Cards = () => {
 
-  const cards = [{   
-                    id : 0,   
-                    image : "./src/imgPerfumes/bossIntenseMas.png",
-                    title : "Perfume Hombre Boos Intense 90ml",
-                    price : "$3.990",
-                    cuota : "en 12x $565.82",
-                    stock : 10,
-                 },
-                //  {  
-                //     id : 1, 
-                //     image : "./src/imgPerfumes/bossBlackMas.png",
-                //     title : "Perfume Hombre EDT Boos Black x 100 ml",
-                //     price : "$3.543",
-                //     cuota : "en 6x $590.50 (S/Int)",
-                //     stock : 8,
-                //  },
-                //  {  
-                //     id : 2, 
-                //     image : "./src/imgPerfumes/bossBlackMas.png",
-                //     title : "Perfume Hombre ??????? x 90 ml",
-                //     price : "$6.243",
-                //     cuota : "en 12x $902.44",
-                //     stock : 10,
-                //  }
-                ];  
+  const [cards, setCards] = useState([]);
 
+  useEffect( () => {
+      fetch('./src/items.json')
+      .then((response) => response.json())
+      .then((json) => setCards(json));
+  },[])
+  
+  
   const [contador, setContador] = useState(1)
-  const limite = 10
+  const limite = 10;
 
   const btnClickPlus = () => {
     if (contador === limite) {
@@ -68,14 +52,15 @@ const Cards = () => {
     
     Swal.fire({
       icon: 'success',
-      title: `${contador} Item added to Chart`,
-      text: `Excelent! ${contador} ${text} added to your chart succesfully!!!`,
+      title: `${contador} Item added to Cart`,
+      text: `Excelent! ${contador} ${text} added to your cart succesfully!!!`,
       footer: '<h5>Keep buying!!</h5>'
     })
     setContador(1)
   }
 
   return (
+
     <div style={{ display: 'inline-flex',
                   marginLeft: '10',
                   marginRight: '10'
@@ -90,26 +75,30 @@ const Cards = () => {
                   display: 'inline',
                   flexDirection: 'row',
                   mx: 4,
+                  wrap: 'wrap',
                 }}
 
             elevation={24}
       >
+          <CardHeader
+            title={card.title}
+            subheader= {'Capacity: ' + card.capacity}
+          />
           <CardActionArea>
             <CardMedia
               component="img"
-              height="350"
+              height="330"
               image={card.image}
               alt="Perfume Img"
             />
             <hr/>
             <CardContent>
               <Typography gutterBottom variant="h6" component="div">
-                <h5>{card.title}</h5>
                 <h6><strong>{card.price}</strong> {card.cuota}</h6>
               </Typography>
               
               <Typography variant="body2" color="text.secondary">
-                Stock Disponible: {limite}
+                Stock Disponible: {card.stock}
               </Typography>
             </CardContent>
           
@@ -151,7 +140,7 @@ const Cards = () => {
                   }}
                   >
                   <Button size="small" variant="contained" color="secondary" onClick={btnAddToChart} >
-                    Add to chart                  
+                    Add to cart                  
                       <AddShoppingCartIcon />
                   </Button>
                 </Badge>
