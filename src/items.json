@@ -24,7 +24,7 @@
     "capacity" : "100ml",
     "price" : "$6.243",
     "cuota" : "en 12x $902.44",
-    "stock" : 10
+    "stock" : 7
   },
   {
     "id" : 4, 
@@ -33,6 +33,6 @@
     "capacity" : "100ml",
     "price" : "$8.959",
     "cuota" : "en 12x $946.33",
-    "stock" : 6
+    "stock" : 5
   }
 ]  
