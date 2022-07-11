@@ -4,7 +4,7 @@
     "image" : "./src/imgPerfumes/bossIntenseMas.png",
     "title" : "Perfume Hombre Boos Intense",
     "capacity" : "90ml",
-    "price" : "$3.990",
+    "price" : 3990.55,
     "cuota" : "en 12x $565.82",
     "stock" : 10
   },
@@ -13,7 +13,7 @@
     "image" : "./src/imgPerfumes/bossBlackMas.png",
     "title" : "Perfume Hombre EDT Boos Black",
     "capacity" : "100ml",
-    "price" : "$3.543",
+    "price" : 3543.99,
     "cuota" : "en 6x $590.50 (S/Int)",
     "stock" : 8
   },
@@ -22,7 +22,7 @@
     "image" : "./src/imgPerfumes/ch212vipmenMas.png",
     "title" : "Perfume CH 212 Vip Men",
     "capacity" : "100ml",
-    "price" : "$6.243",
+    "price" : 6243.80,
     "cuota" : "en 12x $902.44",
     "stock" : 7
   },
@@ -31,7 +31,7 @@
     "image" : "./src/imgPerfumes/naturaEssencialIntensoMas.png",
     "title" : "Perfume Natura Essencial Intenso",
     "capacity" : "100ml",
-    "price" : "$8.959",
+    "price" : 8959.75,
     "cuota" : "en 12x $946.33",
     "stock" : 5
   }

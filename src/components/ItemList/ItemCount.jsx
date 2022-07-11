@@ -10,7 +10,7 @@ const ItemCount = (props) => {
     const [contador, setContador] = useState(1)
     const limite = props.stock;
     const productTitle = props.titleProduct;
-
+    // const price = props.price;
 
     const btnClickPlus = () => {
         
@@ -57,9 +57,10 @@ const ItemCount = (props) => {
             >
                 <AddIcon />
             </Fab>
+            
         </ButtonGroup>
         <hr />
-        <BtnAddToCart counter={contador} titleProduct={props.titleProduct} />
+        <BtnAddToCart counter={contador} titleProduct={props.titleProduct} price={props.price}/>
     </> 
     )
 }

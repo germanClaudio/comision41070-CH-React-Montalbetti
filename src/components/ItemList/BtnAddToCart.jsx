@@ -1,14 +1,17 @@
-import { Button } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { Button } from '@mui/material'
 import Swal from 'sweetalert2';
 
 
 const BtnAddToCart = (props) => {
 
     const contador = props.counter;
-    const product = props.titleProduct
-
+    const product = props.titleProduct;
+    const price = props.price;
+    
+    let totalPrice = parseFloat(contador * price);
+    
     const btnAddToChart = () => {
         let text = ""
         contador === 1 ? text = "item was" : text = "items were"
@@ -17,7 +20,7 @@ const BtnAddToCart = (props) => {
             icon: 'success',
             title: `${contador} Item ${product} added to Cart`,
             text: `Excelent! ${contador} ${text} added to your cart succesfully!!!`,
-            footer: 'Keep buying!!'
+            footer: `Total price: $${totalPrice} - Keep buying!!`
         })
     }
 
