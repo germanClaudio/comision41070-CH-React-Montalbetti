@@ -4,18 +4,18 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActions, CardActionArea, CardHeader, CircularProgress } from '@mui/material';
+import { CardActions, CardActionArea, CardHeader, CircularProgress, Grid } from '@mui/material';
 import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
-import { Box, margin } from '@mui/system';
+import { Box } from '@mui/system';
 
 
 const Cards = () => {
 
   const [heading, setHeading] = useState(<Box sx={{ display: 'flex',
-                                                    margin: '15rem'
+                                                    margin: '12rem'
                                                  }}>
-                                                   Loading Cards...
+                                                   Loading Cards..... 
                                           <CircularProgress color="success"/>
                                         </Box>)
   
@@ -34,16 +34,10 @@ const Cards = () => {
           .then((json) => setCards(json))
           .catch(error => console.log(error));
 
-     }, 2500);
+     }, 2000);
 
        return () => clearTimeout(timer);
-    
-    // fetch(url)
-    //   .then((response) => response.json())
-    //   .then((json) => setCards(json))
-    //   .catch(error => console.log(error));
-    
-   }, [])
+  }, [])
 
       return (
         <div 
@@ -53,16 +47,22 @@ const Cards = () => {
                 marginRight: '10'
         }} >
           <br />
+          
+          <Grid container 
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                flexWrap= 'wrap'>
           <h1>{heading}</h1>
           {cards.map(card => (
-
+            
             <Card key={card.id}
               sx={{
                 maxWidth: 270,
                 display: 'inline',
                 flexDirection: 'row',
-                mx: 4,
-                wrap: 'wrap',
+                m: 4,
+                flexWrap: 'wrap',
               }}
               elevation={24}
             >
@@ -100,6 +100,7 @@ const Cards = () => {
               </Link>
             </Card>
           ))}
+          </Grid>
         </div>
       )
 }

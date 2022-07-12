@@ -27,6 +27,10 @@ code {
     monospace;
 }
 
+.navbar{
+  z-index: 10000;
+}
+
 .navbar .navbar-nav .nav-item .nav-link {
   color: #10263b;
   transition: all .75s ease-in-out;

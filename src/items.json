@@ -34,5 +34,32 @@
     "price" : 8959.75,
     "cuota" : "en 12x $946.33",
     "stock" : 5
+  },
+  {
+    "id" : 5, 
+    "image" : "./src/imgPerfumes/pacoRInvictusMas.png",
+    "title" : "Perfume Paco Rabanne Invictus",
+    "capacity" : "100ml",
+    "price" : 19855.80,
+    "cuota" : "en 12x $1998.25",
+    "stock" : 4
+  },
+  {
+    "id" : 6, 
+    "image" : "./src/imgPerfumes/PacoROneMillMas.png",
+    "title" : "Perfume Paco Rabanne One Millon",
+    "capacity" : "100ml",
+    "price" : 25900.00,
+    "cuota" : "en 6x $4333.17",
+    "stock" : 6
+  },
+  {
+    "id" : 7, 
+    "image" : "./src/imgPerfumes/wellingtonPoloClubAzulMas.png",
+    "title" : "Perfume Wellington Polo Club Azul",
+    "capacity" : "90ml",
+    "price" : 3500.00,
+    "cuota" : "en 6x $583.33",
+    "stock" : 2
   }
 ]  
