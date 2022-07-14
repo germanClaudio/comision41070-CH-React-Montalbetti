@@ -12,7 +12,7 @@ const BtnAddToCart = (props) => {
     
     let totalPrice = parseFloat(contador * price);
     
-    const btnAddToChart = () => {
+    const onAddToChart = () => {
         let text = ""
         contador === 1 ? text = "item was" : text = "items were"
 
@@ -20,12 +20,25 @@ const BtnAddToCart = (props) => {
             icon: 'success',
             title: `${contador} Item ${product} added to Cart`,
             text: `Excelent! ${contador} ${text} added to your cart succesfully!!!`,
-            footer: `Total price: $${totalPrice} - Keep buying!!`
-        })
+            footer: `Total price: $${totalPrice} - Keep buying!!`,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Go to Cart!',
+            cancelButtonText: 'Keep Buying!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Cart!',
+                'Vamos al carrito!!',
+                'success'
+              )
+            }
+          })
     }
 
     return (
-            <Button size="small" variant="contained" color="secondary" onClick={btnAddToChart} 
+            <Button size="small" variant="contained" color="secondary" onClick={onAddToChart} 
             sx={{
                 mx: 'auto',
                 p: 1,

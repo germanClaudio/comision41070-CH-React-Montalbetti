@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import NavBar from './components/navegacion/NavBar';
 import Inicio from './components/paginas/Inicio';
-import About from './components/paginas/About';
+// import About from './components/paginas/About';
 import Items from './components/paginas/Items';
+// import ItemDetailContainer from './components/itemList/ItemDetailContainer';
+import Cart from './components/paginas/Cart';
+
+const ItemDetailContainer = lazy(()=> import('./components/itemList/ItemDetailContainer'))
 
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -20,9 +24,20 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/inicio" exact element={ <Inicio /> } />
-          <Route path="/items" element={ <Items greeting="This is the Items Page"/> } />
-          <Route path="/about" element={ <About greeting="This is the About Page"/> } />
+          <Route index path="/inicio" element={ <Inicio /> } />
+          <Route path="/items" element={ <Items greeting="Items Masculinos Page"/> } />
+          <Route path="/items/:categoryId" element={ <Items greeting="Items Femeninos Page"/> } />
+          <Route path='/ItemDetailContainer/:productId'
+              element={
+                <Suspense fallback={ <div className="loading">Loading...</div>}>
+                  <ItemDetailContainer />
+                </Suspense>
+              }
+          />
+          {/* <Route path="/about" element={ <About greeting="This is the Items Femeninos Page"/> } /> */}
+          <Route path="/cart" element={ <Cart /> } />
+
+          <Route path="*" element={ <Navigate to="/" /> } />
         </Routes>
       </Router>
       

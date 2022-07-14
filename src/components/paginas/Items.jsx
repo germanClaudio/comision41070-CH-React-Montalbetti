@@ -1,25 +1,25 @@
 import React from 'react'
-import ItemListContainer from '../ItemList/ItemListContainer'
+import { useParams } from 'react-router-dom'
+import ItemListContainer from '../itemList/ItemLIstContainer'
 
-const Items = (props) => {
+const Items = ( ) => {
 
   const styleItems = {
     backgroundImage: "radial-gradient(circle, #eeaeca, #94bbe9)",
     fontSize: '1rem',
-    paddingTop: '15vh',
+    paddingTop: '12vh',
     paddingBottom: '50%',
   }
-  
+  const {categoryId} = useParams()
+
   return (
     <div
       style={styleItems}
     >
-      <h1><strong>{props.greeting}</strong></h1>
+      <h1><strong>Items {categoryId}</strong></h1>
       <hr />
         <ItemListContainer />
       <br />
-
-      <h4>Please, be patience our you can start coding with me... for free</h4>
     </div>
   )
 }
