@@ -2,16 +2,7 @@ import { Card, CardActionArea, CardContent, CardHeader, CardMedia, Typography } 
 import React, { useState, useEffect } from 'react'
 import ItemCount from './ItemCount';
 
-
-// import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-//import Divider from '@mui/material/Divider';
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import IconButton from '@mui/material/IconButton';
-// import Typography from '@mui/material/Typography';
-
 
 
 const ItemDetail = ( props ) => {
@@ -38,8 +29,7 @@ const ItemDetail = ( props ) => {
 }, [])
 
   return (
-/*
-      <>
+/*    <>
             <div className="container my-5"
                style={{ maxWidth: '45%',
                         maxHeight: '60%',
@@ -52,7 +42,6 @@ const ItemDetail = ( props ) => {
                     subheader={'Capacity: ' + item.capacity}
                   />
                   <CardActionArea>
-                  
                     <CardMedia
                       component="img"
                       height="450"
@@ -70,30 +59,31 @@ const ItemDetail = ( props ) => {
                       </Typography>
                     </CardContent>
                   </CardActionArea>
-
                   <ItemCount titleProduct={item.title} stock={item.stock} price={item.price} />
-
                 </Card>
-           
         </div>
-        
     </>
    */ 
     
     <>
     <Card sx={{ display: 'flex',
                 margin: 15,
+                marginTop: 'auto',
                 padding: 5
               }}>
       <Box sx={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #2580AF', paddingRight: '2rem'}}>
+        <CardHeader
+                title={item.title} 
+                // subheader={'Capacity: ' + item.capacity}
+        />
         <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
+          {/* <Typography component="div" variant="h5">
             {item.title}
-          </Typography>
+          </Typography> */}
           <Typography variant="subtitle1" color="text.secondary" component="div">
             Item category {item.category} <br/>
             {'Capacity: ' + item.capacity} <br/>
-          <hr/>
+          <hr/> 
             <h6><strong>Precio ${item.price}</strong> o {item.cuota}</h6> <br/>
             Stock Disponible: {item.stock} 
           </Typography>
