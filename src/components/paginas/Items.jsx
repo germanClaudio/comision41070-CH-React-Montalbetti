@@ -8,15 +8,18 @@ const Items = ( ) => {
     backgroundImage: "radial-gradient(circle, #eeaeca, #94bbe9)",
     fontSize: '1rem',
     paddingTop: '12vh',
-    paddingBottom: '15%',
+    paddingBottom: '4vh',
   }
+
   const {categoryId} = useParams()
+
+  // console.log(categoryId)
 
   return (
     <div
       style={styleItems}
     >
-      <h1><strong>Category Items {categoryId}</strong></h1>
+      <h1><strong>Category Perfums {categoryId}</strong></h1>
       <hr />
         <ItemListContainer />
       <br />

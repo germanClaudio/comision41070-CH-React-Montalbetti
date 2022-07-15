@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ItemCount from './ItemCount';
 import { Card, CardContent, CardHeader, CardMedia, CircularProgress, Typography } from '@mui/material'
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
 
 const ItemDetail = ( props ) => {
@@ -23,7 +24,7 @@ const ItemDetail = ( props ) => {
           .catch(error => console.log(error))
           .finally(() => setLoading(false));
 
-    }, 2000);
+    }, 1500);
      return () => clearTimeout(timer);
   }
 
@@ -40,14 +41,14 @@ const ItemDetail = ( props ) => {
                 }}
                 elevation={24}>
                   
-        <Box sx={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #2580AF', paddingRight: '2rem'}}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #2580AF', paddingRight: '3rem', paddingLeft: '2rem'}}>
           <CardHeader
                   title={item.title} 
           />
           <CardContent sx={{ flex: '1 0 auto' }}>
             <Typography variant="subtitle1" color="text.secondary" component="div">
               Item category {item.category} <br/>
-              {'Capacity: ' + item.capacity} <br/>
+              {'Edition: ' + item.capacity} <br/>
             <hr/> 
               <h6><strong>Precio ${item.price}</strong> o {item.cuota}</h6> <br/>
               Stock Disponible: {item.stock} 
@@ -63,6 +64,10 @@ const ItemDetail = ( props ) => {
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', pl: 1, pb: 1 }}>
             
             <ItemCount titleProduct={item.title} stock={item.stock} price={item.price} />
+
+            <Link to={'/'} className="btn btn-secondary btn-sm mt-4">
+                Go Back
+            </Link>
         
           </Box>
             
@@ -73,9 +78,11 @@ const ItemDetail = ( props ) => {
                       flexDirection: 'column',
                       alignItems: 'center',
                       margin: 'auto',
+                      height: '100%',
+                      width: '100%'
                   }}>
                     <h5>Loading Picture... </h5>
-                    <CircularProgress color="secondary"/>
+                    <CircularProgress color="secondary" thickness={5}/>
           </Box>
         :
         

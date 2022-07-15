@@ -6,13 +6,13 @@ import ItemDetail from './ItemDetail'
 const ItemDetailContainer = ( ) => {
 
   const { productId } = useParams()
-  console.log(productId);
+  // console.log(productId);
 
   const styleItemDetail = {
                       backgroundImage: "radial-gradient(circle, #eeaeca, #94bbe9)",
                       fontSize: '1rem',
                       paddingTop: '5vh',
-                      paddingBottom: '15%',
+                      paddingBottom: '12vh',
                       marginTop: '8vh',
   }
   

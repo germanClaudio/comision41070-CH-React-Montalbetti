@@ -5,7 +5,6 @@ import NavBar from './components/navegacion/NavBar';
 import Inicio from './components/paginas/Inicio';
 import About from './components/paginas/About';
 import Items from './components/paginas/Items';
-// import ItemDetailContainer from './components/itemList/ItemDetailContainer';
 import Cart from './components/paginas/Cart';
 
 const ItemDetailContainer = lazy(()=> import('./components/itemList/ItemDetailContainer'))
@@ -25,8 +24,8 @@ function App() {
         <NavBar />
         <Routes>
           <Route index path="/inicio" element={ <Inicio /> } />
-          <Route path="/items" element={ <Items greeting="Items Masculinos Page"/> } />
-          <Route path="/items/:categoryId" element={ <Items greeting="Items Femeninos Page"/> } />
+          <Route path="/items" element={ <Items /> } />
+          <Route path="/items/:categoryId" element={ <Items /> } />
           <Route path='/ItemDetailContainer/:productId'
               element={
                 <Suspense fallback={ <div className="loading">Loading...</div>}>

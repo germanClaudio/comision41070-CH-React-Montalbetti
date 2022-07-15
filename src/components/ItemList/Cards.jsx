@@ -11,7 +11,7 @@ import { Box } from '@mui/system';
 
 const Cards = () => {
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const [cards, setCards] = useState([]);
   const { categoryId } = useParams();
 
@@ -39,7 +39,7 @@ const Cards = () => {
         fetch(url)
             .then((response) => response.json())
             //.then((json) => console.table(json))
-            .then((json) => setCards(json))
+            .then(json => setCards(json))
             .catch(error => console.log(error))
             .finally(() => setLoading(false));
        }, 1000);
@@ -55,10 +55,11 @@ const Cards = () => {
         <Box sx={{  display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    margin: '12rem'
+                    margin: '12rem',
+                    paddingBottom: '10%' 
                 }}>
                   <h2>Loading Cards.....</h2> 
-            <CircularProgress color="success"/>
+            <CircularProgress color="success" thickness={6} size="3rem"/>
         </Box>
         
         :
@@ -68,7 +69,7 @@ const Cards = () => {
                   display: 'inline-flex',
                   marginLeft: '10',
                   marginRight: '10'
-        }} >
+          }} >
           <br />
           
           <Grid container 
@@ -90,7 +91,7 @@ const Cards = () => {
             >
               <CardHeader
                 title={card.title}
-                subheader={'Capacity: ' + card.capacity}
+                subheader={'Edition: ' + card.capacity}
               />
               <CardActionArea>
                 <CardMedia

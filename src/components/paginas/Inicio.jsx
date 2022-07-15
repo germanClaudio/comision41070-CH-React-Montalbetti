@@ -6,7 +6,7 @@ const Inicio = () => {
     const styleHome = { backgroundImage: "radial-gradient(circle, #857e7e99, #c9dfdd, #cad9c3)",
                         fontSize: '1rem',
                         paddingTop: '12vh',
-                        paddingBottom: '10%'
+                        paddingBottom: '5vh'
                     }
 
   return (

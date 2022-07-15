@@ -20,10 +20,10 @@ const NavBar = () => {
                 <NavLink className={({isActive})=>isActive ? 'nav-link-active' : 'nav-link' } to="/Inicio"><i className="fas fa-laptop-house me-1"></i> Home</NavLink>
               </li>
               <li className="nav-item mx-5">
-                <NavLink className={({isActive})=>isActive ? 'nav-link-active' : 'nav-link' } to="/Items/masculino"><i className="fas fa-mars me-1"></i> Items Masculinos</NavLink>
+                <NavLink className={({isActive})=>isActive ? 'nav-link-active' : 'nav-link' } to="/Items/masculinos"><i className="fas fa-mars me-1"></i> Items Masculinos</NavLink>
               </li>
               <li className="nav-item mx-5">
-                <NavLink className={({isActive})=>isActive ? 'nav-link-active' : 'nav-link' } to="/Items/femenino"><i className="fas fa-venus me-1"></i> Items Femeninos</NavLink>
+                <NavLink className={({isActive})=>isActive ? 'nav-link-active' : 'nav-link' } to="/Items/femeninos"><i className="fas fa-venus me-1"></i> Items Femeninos</NavLink>
               </li>
               <li className="nav-item mx-5">
                 <NavLink className={({isActive})=>isActive ? 'nav-link-active' : 'nav-link' } to="/About"><i className="fas fa-user-friends me-1"></i> About</NavLink>
