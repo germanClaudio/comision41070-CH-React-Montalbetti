@@ -3,7 +3,7 @@ import React, { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import NavBar from './components/navegacion/NavBar';
 import Inicio from './components/paginas/Inicio';
-// import About from './components/paginas/About';
+import About from './components/paginas/About';
 import Items from './components/paginas/Items';
 // import ItemDetailContainer from './components/itemList/ItemDetailContainer';
 import Cart from './components/paginas/Cart';
@@ -34,10 +34,10 @@ function App() {
                 </Suspense>
               }
           />
-          {/* <Route path="/about" element={ <About greeting="This is the Items Femeninos Page"/> } /> */}
+          <Route path="/about" element={ <About /> } />
           <Route path="/cart" element={ <Cart /> } />
 
-          <Route path="*" element={ <Navigate to="/" /> } />
+          <Route path="*" element={ <Navigate to="/inicio" /> } />
         </Routes>
       </Router>
       

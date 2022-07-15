@@ -8,7 +8,6 @@ import { CardActions, CardActionArea, CardHeader, CircularProgress, Grid } from 
 import { Link, useParams } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import { Box } from '@mui/system';
-// import ItemDetailContainer from './ItemDetailContainer';
 
 
 const Cards = () => {
@@ -19,14 +18,13 @@ const Cards = () => {
                                                    Loading Cards..... 
                                           <CircularProgress color="success"/>
                                         </Box>)
-  
-  
+    
   const [cards, setCards] = useState([]);
   const { categoryId } = useParams();
 
-  console.log( categoryId )
+  // console.log( categoryId )
 
-  let url = '/src/items.json';  // https://api.npoint.io/349bd201b61cd782fcad     ./src/items.json
+  let url = '/src/items.json';  // https://api.npoint.io/349bd201b61cd782fcad 
   
   useEffect(() => {
 
@@ -38,7 +36,7 @@ const Cards = () => {
             //.then((json) => console.table(json))
             .then(json => setCards(json.filter(card => card.category === categoryId)))
             .catch(error => console.log(error));
-       }, 1000);
+       }, 2000);
          return () => clearTimeout(timer);
       
     } else {

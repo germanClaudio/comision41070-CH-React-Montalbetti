@@ -1,5 +1,4 @@
 import React from 'react'
-import ItemListContainer from '../itemList/ItemLIstContainer'
 
 const About = (props) => {
 
@@ -13,9 +12,9 @@ const About = (props) => {
     <div
       style={styleAbout}
     >
-      <h1><strong>Items Femeninos</strong></h1>
+      <h1><strong>About page</strong></h1>
       <hr />
-        <ItemListContainer />
+        {/* <ItemListContainer /> */}
       <br />
     </div>
   )

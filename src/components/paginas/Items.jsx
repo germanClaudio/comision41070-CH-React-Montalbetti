@@ -16,7 +16,7 @@ const Items = ( ) => {
     <div
       style={styleItems}
     >
-      <h1><strong>Items {categoryId}</strong></h1>
+      <h1><strong>Category Items {categoryId}</strong></h1>
       <hr />
         <ItemListContainer />
       <br />
