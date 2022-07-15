@@ -1,121 +1,101 @@
-import { Card, CardActionArea, CardContent, CardHeader, CardMedia, Typography } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import ItemCount from './ItemCount';
-
+import { Card, CardContent, CardHeader, CardMedia, CircularProgress, Typography } from '@mui/material'
 import Box from '@mui/material/Box';
 
 
 const ItemDetail = ( props ) => {
-  
+
+  const id = (props.idProduct);
+  const [loading, setLoading] = useState(true); 
   const [item, setItem] = useState([]);
-  const itemId = (props.idProduct-1)
   
   let url = `/src/items.json`;   //./src/items.json
 
  useEffect( () => {
-  if (itemId) {
+  if (id) {
     const timer = setTimeout(() => {
-      
+    
       fetch(url)
           .then((response) => response.json())
-          //.then((json) => console.table(json))
-          .then(json => setItem(json[itemId]))
-          .catch(error => console.log(error));
+          // .then((json) => console.table(json))
+          .then(json => setItem(json.find(item => item.id === Number(id))))
+          .catch(error => console.log(error))
+          .finally(() => setLoading(false));
 
-    }, 1500);
+    }, 2000);
      return () => clearTimeout(timer);
   }
 
 }, [])
 
   return (
-/*    <>
-            <div className="container my-5"
-               style={{ maxWidth: '45%',
-                        maxHeight: '60%',
-                        marginTop: '100px'
-                        }}>
-                          Item category {item.category}
-            <Card >
-                  <CardHeader
-                    title={item.title} 
-                    subheader={'Capacity: ' + item.capacity}
-                  />
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      height="450"
-                      image={item.image}
-                      alt="Perfume Img"
-                    />
-                    <hr />
-                    <CardContent>
-                      <Typography gutterBottom variant="h6" component="div">
-                        <h6><strong>Precio ${item.price}</strong> o {item.cuota}</h6>
-                      </Typography>
-
-                      <Typography variant="body2" color="text.secondary">
-                        Stock Disponible: {item.stock}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <ItemCount titleProduct={item.title} stock={item.stock} price={item.price} />
-                </Card>
-        </div>
-    </>
-   */ 
     
     <>
-    <Card sx={{ display: 'flex',
-                margin: 15,
-                marginTop: 'auto',
-                padding: 5
-              }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #2580AF', paddingRight: '2rem'}}>
-        <CardHeader
-                title={item.title} 
-                // subheader={'Capacity: ' + item.capacity}
-        />
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          {/* <Typography component="div" variant="h5">
-            {item.title}
-          </Typography> */}
-          <Typography variant="subtitle1" color="text.secondary" component="div">
-            Item category {item.category} <br/>
-            {'Capacity: ' + item.capacity} <br/>
-          <hr/> 
-            <h6><strong>Precio ${item.price}</strong> o {item.cuota}</h6> <br/>
-            Stock Disponible: {item.stock} 
-          </Typography>
-          <br/>
-        </CardContent>
+      <Card sx={{ display: 'flex',
+                  margin: 15,
+                  marginTop: 'auto',
+                  marginBottom: 'auto',
+                  padding: 5
+                }}
+                elevation={24}>
+                  
+        <Box sx={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #2580AF', paddingRight: '2rem'}}>
+          <CardHeader
+                  title={item.title} 
+          />
+          <CardContent sx={{ flex: '1 0 auto' }}>
+            <Typography variant="subtitle1" color="text.secondary" component="div">
+              Item category {item.category} <br/>
+              {'Capacity: ' + item.capacity} <br/>
+            <hr/> 
+              <h6><strong>Precio ${item.price}</strong> o {item.cuota}</h6> <br/>
+              Stock Disponible: {item.stock} 
+            </Typography>
+
+            <Typography variant="caption" color="text.secondary" component="div">
+              Item id: {item.id} <br/>
+            </Typography>
+
+            <hr/>
+          </CardContent>
+          
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', pl: 1, pb: 1 }}>
+            
+            <ItemCount titleProduct={item.title} stock={item.stock} price={item.price} />
         
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', pl: 1, pb: 1 }}>
-          
-          <ItemCount titleProduct={item.title} stock={item.stock} price={item.price} />
-       
+          </Box>
+            
         </Box>
-          
-      </Box>
-      
-      <CardMedia
-        component="img"
-        sx={{ width: 300,
-              margin: 'auto',
-              borderRadius: '.25rem', 
-              boxShadow: '#8d848a 2px 0px 8px'
-              
-             }}
-        image={item.image}
-        alt="Perfume Img"
-      />
-    </Card>
+        
+        {loading ? 
+          <Box sx={{  display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      margin: 'auto',
+                  }}>
+                    <h5>Loading Picture... </h5>
+                    <CircularProgress color="secondary"/>
+          </Box>
+        :
+        
+          <CardMedia
+            
+            component="img"
+            sx={{ width: 300,
+                  margin: 'auto',
+                  borderRadius: '.5rem', 
+                  boxShadow: '#3d343a 2px 0px 8px'
+                  
+                }}
+            image={item.image}
+            alt="Perfume Img"
+          />
+        }
 
-
+      </Card>
     </>
-    
-    
-    
+
   )
 }
 

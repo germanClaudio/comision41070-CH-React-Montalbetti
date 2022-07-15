@@ -1,13 +1,8 @@
 import { Box, Grid } from '@mui/material';
 import React from 'react'
-import { useParams } from 'react-router-dom';
 import Cards from './Cards';
 
 const ItemListContainer = () => {
-
-  // const { categoryId } = useParams()
-
-  // console.log(categoryId)
 
   return (
     <Box sx={{  flexDirection: 'row',

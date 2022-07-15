@@ -9,16 +9,9 @@ import { Link, useParams } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import { Box } from '@mui/system';
 
-
 const Cards = () => {
 
-  const [heading, setHeading] = useState(<Box sx={{ display: 'flex',
-                                                    margin: '12rem'
-                                                 }}>
-                                                   Loading Cards..... 
-                                          <CircularProgress color="success"/>
-                                        </Box>)
-    
+  const [loading, setLoading] = useState(true)
   const [cards, setCards] = useState([]);
   const { categoryId } = useParams();
 
@@ -30,23 +23,25 @@ const Cards = () => {
 
     if (categoryId) {
       const timer = setTimeout(() => {
-        setHeading('')
+        
         fetch(url)
             .then((response) => response.json())
             //.then((json) => console.table(json))
             .then(json => setCards(json.filter(card => card.category === categoryId)))
-            .catch(error => console.log(error));
+            .catch(error => console.log(error))
+            .finally(() => setLoading(false));
        }, 2000);
          return () => clearTimeout(timer);
       
     } else {
       const timer = setTimeout(() => {
-        setHeading('')
+        
         fetch(url)
             .then((response) => response.json())
             //.then((json) => console.table(json))
             .then((json) => setCards(json))
-            .catch(error => console.log(error));
+            .catch(error => console.log(error))
+            .finally(() => setLoading(false));
        }, 1000);
          return () => clearTimeout(timer);
     }
@@ -55,11 +50,24 @@ const Cards = () => {
 
 
       return (
+
+        loading ? 
+        <Box sx={{  display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    margin: '12rem'
+                }}>
+                  <h2>Loading Cards.....</h2> 
+            <CircularProgress color="success"/>
+        </Box>
+        
+        :
+
         <div 
-        style={{
-                display: 'inline-flex',
-                marginLeft: '10',
-                marginRight: '10'
+          style={{
+                  display: 'inline-flex',
+                  marginLeft: '10',
+                  marginRight: '10'
         }} >
           <br />
           
@@ -68,8 +76,7 @@ const Cards = () => {
                 justifyContent="center"
                 alignItems="center"
                 flexWrap= 'wrap'>
-          <h1>{heading}</h1>
-
+          
           {cards.map(card => (
             <Card key={card.id}
               sx={{

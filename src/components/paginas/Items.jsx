@@ -8,7 +8,7 @@ const Items = ( ) => {
     backgroundImage: "radial-gradient(circle, #eeaeca, #94bbe9)",
     fontSize: '1rem',
     paddingTop: '12vh',
-    paddingBottom: '50%',
+    paddingBottom: '15%',
   }
   const {categoryId} = useParams()
 
