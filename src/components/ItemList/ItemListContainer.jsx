@@ -1,7 +1,7 @@
 import { Box, CircularProgress, Grid } from '@mui/material';
 import {React, useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom'
-import Cards from './Cards';
+import ItemList from './ItemList';
 
 
 const ItemListContainer = () => {
@@ -76,7 +76,7 @@ const ItemListContainer = () => {
             alignItems="center"
             flexWrap= 'wrap'
           > 
-              <Cards cards={cards} />
+              <ItemList cards={cards} />
               
           </Grid>
       </Grid>

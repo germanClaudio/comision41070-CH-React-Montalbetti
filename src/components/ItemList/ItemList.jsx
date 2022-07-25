@@ -8,7 +8,7 @@ import { CardActions, CardActionArea, CardHeader, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
 
-const Cards = ( props) => {
+const ItemList = ( props) => {
 
   const cards = props.cards;
 
@@ -85,4 +85,4 @@ const Cards = ( props) => {
       )
 }
 
-export default Cards
+export default ItemList
