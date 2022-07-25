@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Button } from '@mui/material'
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom'
 
 
 const BtnAddToCart = (props) => {
@@ -11,6 +12,8 @@ const BtnAddToCart = (props) => {
     const price = props.price;
     
     let totalPrice = parseFloat(contador * price);
+
+    const [add, setAdd ] = useState(false);
     
     const onAddToChart = () => {
         let text = ""
@@ -26,19 +29,21 @@ const BtnAddToCart = (props) => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Go to Cart!',
             cancelButtonText: 'Keep Buying!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire(
-                'Cart!',
-                'Vamos al carrito!!',
-                'success'
-              )
-            }
-          })
+        })
+        setAdd(!add)
     }
 
     return (
-            <Button size="small" variant="contained" color="secondary" onClick={onAddToChart} 
+      
+        add ?
+          <Link to="../Cart" className="btn btn-success mx-auto my-2">
+            End Shopping
+            <AddShoppingCartIcon />
+          </Link>
+
+        :
+
+            <Button size="small" variant="contained" color="secondary" onClick={onAddToChart}
             sx={{
                 mx: 'auto',
                 p: 1,
@@ -48,6 +53,7 @@ const BtnAddToCart = (props) => {
                 Add to cart
                 <AddShoppingCartIcon />
             </Button>
+            
     )
 }
 
