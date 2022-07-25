@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import ItemCount from './ItemCount';
 import { Card, CardContent, CardHeader, CardMedia, CircularProgress, Typography } from '@mui/material'
 import Box from '@mui/material/Box';
@@ -7,31 +7,10 @@ import { Link } from 'react-router-dom';
 
 const ItemDetail = ( props ) => {
 
-  const id = (props.idProduct);
-  const [loading, setLoading] = useState(true); 
-  const [item, setItem] = useState([]);
+  const item = (props.item);
+  const loading = (props.loading);
   
-  let url = `/src/items.json`;   //./src/items.json
-
- useEffect( () => {
-  if (id) {
-    const timer = setTimeout(() => {
-    
-      fetch(url)
-          .then((response) => response.json())
-          // .then((json) => console.table(json))
-          .then(json => setItem(json.find(item => item.id === Number(id))))
-          .catch(error => console.log(error))
-          .finally(() => setLoading(false));
-
-    }, 1500);
-     return () => clearTimeout(timer);
-  }
-
-}, [])
-
-  return (
-    
+return (
     <>
       <Card sx={{ display: 'flex',
                   margin: 15,
@@ -66,7 +45,7 @@ const ItemDetail = ( props ) => {
             <ItemCount titleProduct={item.title} stock={item.stock} price={item.price} />
 
             <Link to={'/'} className="btn btn-secondary btn-sm mt-4">
-                Go Back
+                Go Back <i className="fas fa-arrow-rotate-left"></i>
             </Link>
         
           </Box>
@@ -85,12 +64,13 @@ const ItemDetail = ( props ) => {
                     <CircularProgress color="secondary" thickness={5}/>
           </Box>
         :
-        
           <CardMedia
             
             component="img"
             sx={{ width: 300,
                   margin: 'auto',
+                  paddingLeft: '1rem',
+                  paddingRight: '1rem',
                   borderRadius: '.5rem', 
                   boxShadow: '#3d343a 2px 0px 8px'
                   
@@ -98,7 +78,7 @@ const ItemDetail = ( props ) => {
             image={item.image}
             alt="Perfume Img"
           />
-        }
+         } 
 
       </Card>
     </>

@@ -1,12 +1,13 @@
 import { Box } from '@mui/system'
-import React from 'react'
+import { React, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
 
-const ItemDetailContainer = ( ) => {
+const ItemDetailContainer = () => {
 
-  const { productId } = useParams()
-  // console.log(productId);
+  const { productId } = useParams();
+  const [item, setItem] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const styleItemDetail = {
                       backgroundImage: "radial-gradient(circle, #eeaeca, #94bbe9)",
@@ -15,6 +16,26 @@ const ItemDetailContainer = ( ) => {
                       paddingBottom: '12vh',
                       marginTop: '8vh',
   }
+
+  let url = `/src/items.json`;
+
+  useEffect( () => {
+
+    if (productId) {
+      const timer = setTimeout(() => {
+      
+        fetch(url)
+            .then((response) => response.json())
+            // .then((json) => console.table(json))
+            .then(json => setItem(json.find(item => item.id === Number(productId))))
+            .catch(error => console.log(error))
+            .finally(() => setLoading(false));
+  
+      }, 1500);
+       return () => clearTimeout(timer);
+    }
+  
+  }, [])
   
   return (
     <>
@@ -31,7 +52,7 @@ const ItemDetailContainer = ( ) => {
                         marginTop: '50px'}}>
 
               <div className="container my-5 mx-auto">
-                  <ItemDetail idProduct={productId}/>
+                  <ItemDetail item={item} loading={loading}/> 
               </div>
 
             </Box>
@@ -41,3 +62,5 @@ const ItemDetailContainer = ( ) => {
 }
 
 export default ItemDetailContainer
+
+//idProduct={productId}

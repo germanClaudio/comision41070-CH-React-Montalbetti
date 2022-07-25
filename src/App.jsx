@@ -11,6 +11,7 @@ const ItemDetailContainer = lazy(()=> import('./components/itemList/ItemDetailCo
 
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import CartContextProvider from './context/CartContext';
 
 function App() {
   const styleApp = {backgroundColor: '#d2d4e899', fontSize: '1.25rem'}
@@ -21,23 +22,25 @@ function App() {
         style={ styleApp }
     >
       <Router>
-        <NavBar />
-        <Routes>
-          <Route index path="/inicio" element={ <Inicio /> } />
-          <Route path="/items" element={ <Items /> } />
-          <Route path="/items/:categoryId" element={ <Items /> } />
-          <Route path='/ItemDetailContainer/:productId'
-              element={
-                <Suspense fallback={ <div className="loading">Loading...</div>}>
-                  <ItemDetailContainer />
-                </Suspense>
-              }
-          />
-          <Route path="/about" element={ <About /> } />
-          <Route path="/cart" element={ <Cart /> } />
+        <CartContextProvider>
+            <NavBar />
+            <Routes>
+              <Route index path="/inicio" element={ <Inicio /> } />
+              <Route path="/items" element={ <Items /> } />
+              <Route path="/items/:categoryId" element={ <Items /> } />
+              <Route path='/ItemDetailContainer/:productId'
+                  element={
+                    <Suspense fallback={ <div className="loading">Loading...</div>}>
+                      <ItemDetailContainer />
+                    </Suspense>
+                  }
+              />
+              <Route path="/about" element={ <About /> } />
+              <Route path="/cart" element={ <Cart /> } />
 
-          <Route path="*" element={ <Navigate to="/inicio" /> } />
-        </Routes>
+              <Route path="*" element={ <Navigate to="/inicio" /> } />
+            </Routes>
+        </CartContextProvider>
       </Router>
       
     </div>

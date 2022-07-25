@@ -1,75 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActions, CardActionArea, CardHeader, CircularProgress, Grid } from '@mui/material';
-import { Link, useParams } from 'react-router-dom'
-import ItemCount from './ItemCount'
-import { Box } from '@mui/system';
+import { CardActions, CardActionArea, CardHeader, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+import ItemCount from './ItemCount';
 
-const Cards = () => {
+const Cards = ( props) => {
 
-  const [loading, setLoading] = useState(true);
-  const [cards, setCards] = useState([]);
-  const { categoryId } = useParams();
-
-  // console.log( categoryId )
-
-  let url = '/src/items.json';  // https://api.npoint.io/349bd201b61cd782fcad 
-  
-  useEffect(() => {
-
-    if (categoryId) {
-      const timer = setTimeout(() => {
-        
-        fetch(url)
-            .then((response) => response.json())
-            //.then((json) => console.table(json))
-            .then(json => setCards(json.filter(card => card.category === categoryId)))
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false));
-       }, 2000);
-         return () => clearTimeout(timer);
-      
-    } else {
-      const timer = setTimeout(() => {
-        
-        fetch(url)
-            .then((response) => response.json())
-            //.then((json) => console.table(json))
-            .then(json => setCards(json))
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false));
-       }, 1000);
-         return () => clearTimeout(timer);
-    }
-  
-  }, [categoryId])
-
+  const cards = props.cards;
 
       return (
-
-        loading ? 
-        <Box sx={{  display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    margin: '12rem',
-                    paddingBottom: '10%' 
-                }}>
-                  <h2>Loading Cards.....</h2> 
-            <CircularProgress color="success" thickness={6} size="3rem"/>
-        </Box>
-        
-        :
 
         <div 
           style={{
                   display: 'inline-flex',
                   marginLeft: '10',
                   marginRight: '10'
-          }} >
+                }} >
           <br />
           
           <Grid container 
@@ -121,10 +71,9 @@ const Cards = () => {
               />
 
               <CardActions>
-                  
               </CardActions>
                   
-                  <Link to={`/ItemDetailContainer/${card.id}`} className="btn btn-secondary btn-sm my-2"
+                  <Link to={`/ItemDetailContainer/${card.id}`} className="btn btn-secondary btn-sm my-3 "
                   >
                       See Product's Detail
                   </Link>
