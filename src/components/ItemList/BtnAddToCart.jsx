@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { Button } from '@mui/material'
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom'
@@ -37,8 +38,8 @@ const BtnAddToCart = (props) => {
       
         add ?
           <Link to="../Cart" className="btn btn-success mx-auto my-2">
-            End Shopping
-            <AddShoppingCartIcon />
+            Finalizar Compra 
+            <ShoppingCartCheckoutIcon />
           </Link>
 
         :
