@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
-  const { cartList, emptyCart } = useCartContext()
-
+  const { cartList, emptyCart, removeItem, getCartCount, getCartTotal } = useCartContext()
+  console.log('Precio de todos los items: ' + getCartTotal);
+  
   return (
     <div
       style={{
@@ -20,7 +21,21 @@ const Cart = () => {
         width: '100%',
       }}>
 
-      <Card sx={{ maxWidth: 950, margin: 'auto', padding: '10', bgcolor: '#ac9cac99' }}>
+      { getCartCount() === 0 ?
+        <Card sx={{ maxWidth: 950, margin: 'auto', padding: '10', bgcolor: '#ac9cac99' }}>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Your Shopping Cart is <strong>EMPTY!</strong>
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Chosse an Item and you will see it here!
+            </Typography>
+          </CardContent>
+        </Card>
+        
+      :
+      <>
+        <Card sx={{ maxWidth: 950, margin: 'auto', padding: '10', bgcolor: '#ac9cac99' }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Your Shopping Cart
@@ -30,7 +45,7 @@ const Cart = () => {
           </Typography>
         </CardContent>
       </Card>
-
+    
       <div className="my-3">
         {cartList.map(item => (
 
@@ -63,7 +78,7 @@ const Cart = () => {
                   </React.Fragment>
                 }
               />
-              <Button size="small" variant="contained" color="error"
+              <Button size="small" variant="contained" color="error" onClick={() => removeItem(item.id)}
                 sx={{
                   mx: 'auto',
                   my: 4,
@@ -85,7 +100,7 @@ const Cart = () => {
 
       <Alert variant="filled" severity="success"
         sx={{ maxWidth: 950, margin: 'auto', padding: '10' }}>
-        <strong> Total Cart Price: $ ???</strong>
+        <strong> Total Cart Price: $ {getCartTotal()} </strong>
       </Alert>
 
       <Button size="small" variant="contained" color="secondary" onClick={emptyCart}
@@ -99,7 +114,9 @@ const Cart = () => {
         Empty Cart
         <RemoveShoppingCartTwoToneIcon />
       </Button>
-      <br />
+      </>
+      }
+      <br /> 
       <Link to={'/'} className="btn btn-secondary btn-sm my-1">
         Go Back <i className="fas fa-arrow-rotate-left"></i>
       </Link>

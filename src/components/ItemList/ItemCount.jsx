@@ -15,10 +15,7 @@ import { useCartContext } from '../../context/CartContext';
 
 const ItemCount = ({ item, stock, initial}) => {
 
-    // const initial = props.initial;
     const [contador, setContador] = useState(initial);
-    // const limite = props.stock;
-    // const productTitle = props.titleProduct;
     
     /* ----------------- */
     const price = item.price;
@@ -44,7 +41,6 @@ const ItemCount = ({ item, stock, initial}) => {
         })
         setAdd(!add)
     }
-
     /* ----------------- */
 
     const btnClickPlus = () => {
