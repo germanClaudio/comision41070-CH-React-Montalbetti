@@ -6,7 +6,7 @@ import ItemDetail from './ItemDetail'
 const ItemDetailContainer = () => {
 
   const { productId } = useParams();
-  const [item, setItem] = useState([]);
+  const [item, setItem] = useState({});
   const [loading, setLoading] = useState(true);
 
   const styleItemDetail = {
@@ -31,11 +31,11 @@ const ItemDetailContainer = () => {
             .catch(error => console.log(error))
             .finally(() => setLoading(false));
   
-      }, 1500);
+      }, 1000);
        return () => clearTimeout(timer);
     }
-  
-  }, [])
+ 
+}, [])
   
   return (
     <>
@@ -62,5 +62,3 @@ const ItemDetailContainer = () => {
 }
 
 export default ItemDetailContainer
-
-//idProduct={productId}

@@ -1,12 +1,11 @@
 import React from 'react'
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActions, CardActionArea, CardHeader, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-// import ItemCount from './ItemCount';
+
 
 const ItemList = ( props ) => {
 
@@ -61,14 +60,6 @@ const ItemList = ( props ) => {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-
-              {/* <ItemCount titleProduct={card.title}
-                                stock={card.stock}
-                                price={card.price}
-                                image={card.image}
-                                cuota={card.cuota}
-                                capacity={card.capacity}
-              /> */}
 
               <CardActions>
               </CardActions>

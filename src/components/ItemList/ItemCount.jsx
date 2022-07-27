@@ -10,35 +10,37 @@ import { Link } from 'react-router-dom'
 import { Button } from '@mui/material'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
+import { useCartContext } from '../../context/CartContext';
 
-const ItemCount = (props) => {
 
-    const [contador, setContador] = useState(1)
-    const limite = props.stock;
-    const productTitle = props.titleProduct;
-    // const price = props.price;
+const ItemCount = ({ item, stock, initial}) => {
 
-    /* ----------------- */
-
-    const product = props.titleProduct;
-    const price = props.price;
+    // const initial = props.initial;
+    const [contador, setContador] = useState(initial);
+    // const limite = props.stock;
+    // const productTitle = props.titleProduct;
     
+    /* ----------------- */
+    const price = item.price;
     let totalPrice = parseFloat(contador * price);
-
     const [add, setAdd ] = useState(false);
     
+    const { addToCart, cartList } = useCartContext()
+
     const onAddToChart = () => {
         let text = ""
         contador === 1 ? text = "item was" : text = "items were"
 
+        addToCart({ ...item, quantity: contador, totalPrice: totalPrice})
+        
         Swal.fire({
             icon: 'success',
-            title: `${contador} Item ${product} added to Cart`,
+            title: `${contador} Item ${item.title} added to Cart`,
             text: `Excelent! ${contador} ${text} added to your cart succesfully!!!`,
             footer: `Total price: $${totalPrice} - Keep buying!!`,
             showCancelButton: false,
             confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Go to Cart!',
+            confirmButtonText: 'Click on "Finalizar Compra"',
         })
         setAdd(!add)
     }
@@ -47,14 +49,14 @@ const ItemCount = (props) => {
 
     const btnClickPlus = () => {
         
-        if (contador === limite) {
+        if (contador === stock) {
             Swal.fire({
                 icon: 'warning',
-                title: `Límite de Stock de ${productTitle}`,
-                text: `El stock es: ${limite}, el contador volverá a uno (1).`,
+                title: `Límite de Stock de ${item.title}`,
+                text: `El stock es: ${stock}, el contador volverá a uno (${initial}).`,
                 footer: 'Keep buying!!'
             })
-            setContador(1)
+            setContador(initial)
         }
 
         else if (contador >= 1) {
@@ -63,7 +65,7 @@ const ItemCount = (props) => {
     }
 
     const btnClickMinus = () => {
-        contador === 1 ? setContador(contador) : setContador(contador - 1)
+        contador === initial ? setContador(contador) : setContador(contador - 1)
     }
 
 
@@ -78,43 +80,43 @@ const ItemCount = (props) => {
         :
 
         <>
-        <ButtonGroup disableElevation variant="contained">
-            <Fab size="small" color="primary" aria-label="add" onClick={btnClickMinus}
-                sx={{
-                    mx: 5,
-                }}
-            >
-                <RemoveIcon />
-            </Fab>
+            <ButtonGroup disableElevation variant="contained">
+                <Fab size="small" color="primary" aria-label="add" onClick={btnClickMinus}
+                    sx={{
+                        mx: 5,
+                    }}
+                >
+                    <RemoveIcon />
+                </Fab>
 
-            <Chip label={contador} color="warning"
+                <Chip label={contador} color="warning"
+                    sx={{
+                        mx: 'auto',
+                    }}
+                />
+
+                <Fab size="small" color="success" aria-label="add" onClick={btnClickPlus}
+                    sx={{
+                        mx: 5,
+                    }}
+                >
+                    <AddIcon />
+                </Fab>
+                
+            </ButtonGroup>
+            <hr />
+            {/* <BtnAddToCart counter={contador} titleProduct={props.titleProduct} price={props.price}/> */}
+
+            <Button size="small" variant="contained" color="secondary" onClick={onAddToChart}
                 sx={{
                     mx: 'auto',
+                    p: 1,
                 }}
-            />
-
-            <Fab size="small" color="success" aria-label="add" onClick={btnClickPlus}
-                sx={{
-                    mx: 5,
-                }}
-            >
-                <AddIcon />
-            </Fab>
-            
-        </ButtonGroup>
-        <hr />
-        {/* <BtnAddToCart counter={contador} titleProduct={props.titleProduct} price={props.price}/> */}
-
-        <Button size="small" variant="contained" color="secondary" onClick={onAddToChart}
-            sx={{
-                mx: 'auto',
-                p: 1,
-            }}
-            elevation={24}
-            >
-                Add to Cart
-                <AddShoppingCartIcon />
-        </Button>       
+                elevation={24}
+                >
+                    Add to Cart
+                    <AddShoppingCartIcon />
+            </Button>       
 
     </> 
     )

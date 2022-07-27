@@ -1,15 +1,18 @@
 import React from 'react'
 import ItemCount from './ItemCount';
-import { Card, CardContent, CardHeader, CardMedia, CircularProgress, Typography } from '@mui/material'
+import { Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material'
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
+import Loading from '../loading/Loading';
+//import { useCartContext } from '../../context/CartContext';
 
 
-const ItemDetail = ( props ) => {
 
-  const item = (props.item);
-  const loading = (props.loading);
-  
+const ItemDetail = ( {item, loading} ) => {
+
+  // const item = (props.item);
+  // const loading = (props.loading);
+
 return (
     <>
       <Card sx={{ display: 'flex',
@@ -42,7 +45,7 @@ return (
           
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', pl: 1, pb: 1 }}>
             
-            <ItemCount titleProduct={item.title} stock={item.stock} price={item.price} />
+            <ItemCount item={item} stock={item.stock} initial={1} />
 
             <Link to={'/'} className="btn btn-secondary btn-sm mt-4">
                 Go Back <i className="fas fa-arrow-rotate-left"></i>
@@ -53,16 +56,9 @@ return (
         </Box>
         
         {loading ? 
-          <Box sx={{  display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      margin: 'auto',
-                      height: '100%',
-                      width: '100%'
-                  }}>
-                    <h5>Loading Picture... </h5>
-                    <CircularProgress color="secondary" thickness={5}/>
-          </Box>
+          
+          <Loading/>
+          
         :
           <CardMedia
             

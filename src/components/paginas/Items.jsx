@@ -13,8 +13,6 @@ const Items = ( ) => {
 
   const {categoryId} = useParams()
 
-  // console.log(categoryId)
-
   return (
     <div
       style={styleItems}

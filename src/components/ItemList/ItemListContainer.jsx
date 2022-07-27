@@ -23,7 +23,7 @@ const ItemListContainer = () => {
             .then(json => setCards(json.filter(card => card.category === categoryId)))
             .catch(error => console.log(error))
             .finally(() => setLoading(false));
-       }, 2000);
+       }, 1000);
          return () => clearTimeout(timer);
       
     } else {
