@@ -102,8 +102,8 @@ const Cart = () => {
       </div>
 
       <Alert variant="filled" severity="success"
-        sx={{ maxWidth: 950, margin: 'auto', padding: '10' }}>
-        <strong> Total Cart Price: $ {getCartTotal().toFixed(2)} </strong> for {getItemTotal()} Items
+        sx={{ maxWidth: 950, height: 65, margin: 'auto', padding: '10', alignItems: "center" }}>
+        <strong> Total Cart Price: $ {getCartTotal().toFixed(2)} </strong> for total qty. {getItemTotal()} products
       </Alert>
 
       <Button size="small" variant="contained" color="secondary" onClick={emptyCart}
