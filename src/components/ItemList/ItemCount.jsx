@@ -19,10 +19,10 @@ const ItemCount = ({ item, stock, initial}) => {
     
     /* ----------------- */
     const price = item.price;
-    let totalPrice = parseFloat(contador * price);
+    let totalPrice = parseFloat(contador * price).toFixed(2);
     const [add, setAdd ] = useState(false);
     
-    const { addToCart, cartList } = useCartContext()
+    const { addToCart } = useCartContext()
 
     const onAddToChart = () => {
         let text = ""

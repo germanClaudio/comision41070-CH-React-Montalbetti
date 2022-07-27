@@ -50,6 +50,13 @@ const CartContextProvider = ({ children }) => {
           (total, item) => total + item.price * item.quantity,
           0
         );
+    };
+    
+    const getItemTotal = () => {
+        return cartList.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
     };  
 
     return(
@@ -59,7 +66,8 @@ const CartContextProvider = ({ children }) => {
             emptyCart,
             removeItem,
             getCartCount,
-            getCartTotal
+            getCartTotal,
+            getItemTotal,
         }}>
             { children }
         </CartContext.Provider>

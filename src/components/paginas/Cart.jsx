@@ -4,13 +4,15 @@ import RemoveShoppingCartTwoToneIcon from '@mui/icons-material/RemoveShoppingCar
 import { Avatar, Button, Card, CardContent, Alert, Divider, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
+import ProductionQuantityLimitsRoundedIcon from '@mui/icons-material/ProductionQuantityLimitsRounded';
 
 
 const Cart = () => {
 
-  const { cartList, emptyCart, removeItem, getCartCount, getCartTotal } = useCartContext()
-  console.log('Precio de todos los items: ' + getCartTotal);
+  const { cartList, emptyCart, removeItem, getCartCount, getCartTotal, getItemTotal } = useCartContext()
   
+  const itemQty = getCartCount();
+
   return (
     <div
       style={{
@@ -22,10 +24,10 @@ const Cart = () => {
       }}>
 
       { getCartCount() === 0 ?
-        <Card sx={{ maxWidth: 950, margin: 'auto', padding: '10', bgcolor: '#ac9cac99' }}>
+        <Card sx={{ maxWidth: 950, margin: 'auto', padding: '10', bgcolor: '#ac6c6c99' }}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Your Shopping Cart is <strong>EMPTY!</strong>
+              Your Shopping Cart is <strong>EMPTY!</strong> <ProductionQuantityLimitsRoundedIcon />
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Chosse an Item and you will see it here!
@@ -34,11 +36,12 @@ const Cart = () => {
         </Card>
         
       :
+
       <>
         <Card sx={{ maxWidth: 950, margin: 'auto', padding: '10', bgcolor: '#ac9cac99' }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Your Shopping Cart
+            Your Shopping Cart has {itemQty} items in total
           </Typography>
           <Typography variant="body2" color="text.secondary">
             This is your Items List — <strong>Keep buying!</strong>
@@ -91,7 +94,7 @@ const Cart = () => {
             </ListItem>
 
             <Divider>
-              Total Items Price: <strong>${item.totalPrice}</strong>
+              Sub-total price for {item.quantity} Items: <strong>${item.totalPrice}</strong>
             </Divider>
           </List>
 
@@ -100,7 +103,7 @@ const Cart = () => {
 
       <Alert variant="filled" severity="success"
         sx={{ maxWidth: 950, margin: 'auto', padding: '10' }}>
-        <strong> Total Cart Price: $ {getCartTotal()} </strong>
+        <strong> Total Cart Price: $ {getCartTotal().toFixed(2)} </strong> for {getItemTotal()} Items
       </Alert>
 
       <Button size="small" variant="contained" color="secondary" onClick={emptyCart}

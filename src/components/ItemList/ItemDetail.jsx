@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import Loading from '../loading/Loading';
 //import { useCartContext } from '../../context/CartContext';
 
-
-
 const ItemDetail = ( {item, loading} ) => {
 
   // const item = (props.item);
