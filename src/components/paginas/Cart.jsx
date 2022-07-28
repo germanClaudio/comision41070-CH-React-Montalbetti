@@ -12,6 +12,7 @@ const Cart = () => {
   const { cartList, emptyCart, removeItem, getCartCount, getCartTotal, getItemTotal } = useCartContext()
   
   const itemQty = getCartCount();
+  
 
   return (
     <div

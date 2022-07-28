@@ -24,9 +24,8 @@ const CartContextProvider = ({ children }) => {
             
             } else {
                 const product = cartCopy[index];
-                cartCopy[index] = { ...product, quantity: objProducto.quantity };
+                cartCopy[index] = { ...product, quantity: objProducto.quantity, totalPrice: objProducto.totalPrice };
             }
-
             setCartList(cartCopy);
     };
     
