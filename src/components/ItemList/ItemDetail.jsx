@@ -8,20 +8,17 @@ import Loading from '../loading/Loading';
 
 const ItemDetail = ( {item, loading} ) => {
 
-  // const item = (props.item);
-  // const loading = (props.loading);
-
 return (
     <>
       <Card sx={{ display: 'flex',
                   margin: 15,
                   marginTop: 'auto',
                   marginBottom: 'auto',
-                  padding: 5
+                  padding: 5,
                 }}
                 elevation={24}>
                   
-        <Box sx={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #2580AF', paddingRight: '2rem', paddingLeft: '2rem'}}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #2580AF', paddingRight: '2rem', paddingLeft: '2rem', width: 500}}>
           <CardHeader
                   title={item.title} 
           />

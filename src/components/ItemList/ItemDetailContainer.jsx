@@ -18,21 +18,6 @@ const ItemDetailContainer = () => {
                       marginTop: '8vh',
   }
 
-// let url = `/src/items.json`;
-//   useEffect( () => {
-//     if (productId) {
-//       const timer = setTimeout(() => {
-//         fetch(url)
-//             .then((response) => response.json())
-//             // .then((json) => console.table(json))
-//             .then(json => setItem(json.find(item => item.id === Number(productId))))
-//             .catch(error => console.log(error))
-//             .finally(() => setLoading(false));
-//       }, 1000);
-//        return () => clearTimeout(timer);
-//     }
-// }, [])
-
 useEffect(() => {
     const db = getFirestore();
 

@@ -10,32 +10,6 @@ const ItemListContainer = () => {
   const [cards, setCards] = useState([]);
   const { categoryId } = useParams();
 
-  // const [value, setValue] = useState('')
-
-  // let url = '/src/items.json';  // https://api.npoint.io/349bd201b61cd782fcad 
-  // useEffect(() => {
-  //   if (categoryId) {
-  //     const timer = setTimeout(() => {
-  //       fetch(url)
-  //           .then((response) => response.json())
-  //           //.then((json) => console.table(json))
-  //           .then(json => setCards(json.filter(card => card.category === categoryId)))
-  //           .catch(error => console.log(error))
-  //           .finally(() => setLoading(false));
-  //      }, 1000);
-  //        return () => clearTimeout(timer);
-  //   } else {
-  //     const timer = setTimeout(() => {
-  //       fetch(url)
-  //           .then((response) => response.json())
-  //           .then(json => setCards(json))
-  //           .catch(error => console.log(error))
-  //           .finally(() => setLoading(false));
-  //      }, 1000);
-  //        return () => clearTimeout(timer);
-  //   }
-  // }, [categoryId])
-
   useEffect(() => {
     const db = getFirestore();
     const queryCollectionItems = collection(db, 'items');
@@ -57,7 +31,7 @@ const ItemListContainer = () => {
       return () => clearTimeout(timer);
 
     } else {
-      
+
       const timer = setTimeout(() => {
         getDocs(queryCollectionItems)
           .then((response) => setCards(response.docs.map(card => ({ id: card.id, ...card.data() }))))

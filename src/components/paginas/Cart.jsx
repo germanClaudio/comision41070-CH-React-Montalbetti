@@ -93,7 +93,7 @@ const Cart = () => {
             </ListItem>
 
             <Divider>
-              Sub-total price for {item.quantity} Items: <strong>${item.totalPrice}</strong>
+              Sub-total price for qty. {item.quantity}: <strong>${item.totalPrice}</strong>
             </Divider>
           </List>
 

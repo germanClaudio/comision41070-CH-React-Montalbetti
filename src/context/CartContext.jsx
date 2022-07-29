@@ -9,12 +9,6 @@ const CartContextProvider = ({ children }) => {
 
     const [cartList, setCartList] = useState([])
     
-    // const addToCart = (objProducto) => {
-    //     setCartList([
-    //             ...cartList,
-    //             objProducto ])
-    // }
-
     const addToCart = (objProducto) => {
         const cartCopy = cartList.slice();
             const index = cartCopy.findIndex((item) => objProducto.id === item.id);
@@ -30,6 +24,7 @@ const CartContextProvider = ({ children }) => {
     };
     
     const emptyCart = () => {
+
         setCartList([]);
     }
 
