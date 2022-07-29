@@ -15,7 +15,7 @@ const CartWidget = () => {
       <div className="badge rounded-pill bg-dark mx-auto position-relative">
         
         {
-          getCartCount() !== 0 ? 
+          itemQty !== 0 ? 
             
             <i className="fas fa-cart-plus">
               <span className="position-relative top-0 start-50 translate-middle badge rounded-pill bg-danger">

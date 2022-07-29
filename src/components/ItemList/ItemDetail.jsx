@@ -21,7 +21,7 @@ return (
                 }}
                 elevation={24}>
                   
-        <Box sx={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #2580AF', paddingRight: '3rem', paddingLeft: '2rem'}}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #2580AF', paddingRight: '2rem', paddingLeft: '2rem'}}>
           <CardHeader
                   title={item.title} 
           />
@@ -63,6 +63,8 @@ return (
             component="img"
             sx={{ width: 300,
                   margin: 'auto',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
                   paddingLeft: '1rem',
                   paddingRight: '1rem',
                   borderRadius: '.5rem', 

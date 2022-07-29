@@ -2,6 +2,7 @@ import { Box } from '@mui/system'
 import { React, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
 
 const ItemDetailContainer = () => {
 
@@ -17,25 +18,38 @@ const ItemDetailContainer = () => {
                       marginTop: '8vh',
   }
 
-  let url = `/src/items.json`;
+// let url = `/src/items.json`;
+//   useEffect( () => {
+//     if (productId) {
+//       const timer = setTimeout(() => {
+//         fetch(url)
+//             .then((response) => response.json())
+//             // .then((json) => console.table(json))
+//             .then(json => setItem(json.find(item => item.id === Number(productId))))
+//             .catch(error => console.log(error))
+//             .finally(() => setLoading(false));
+//       }, 1000);
+//        return () => clearTimeout(timer);
+//     }
+// }, [])
 
-  useEffect( () => {
+useEffect(() => {
+    const db = getFirestore();
 
-    if (productId) {
-      const timer = setTimeout(() => {
-      
-        fetch(url)
-            .then((response) => response.json())
-            // .then((json) => console.table(json))
-            .then(json => setItem(json.find(item => item.id === Number(productId))))
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false));
-  
-      }, 1000);
-       return () => clearTimeout(timer);
-    }
- 
-}, [])
+    const queryItem = doc(db, 'items', productId);  //RVVNdyjJq4Q9Gtp2wBYt
+    getDoc(queryItem)
+    .then(response => {
+      if (response.exists()) {
+        setItem( { id: response.id, ...response.data() } )
+        
+      } else {
+        console.log('No se encontro el producto!')
+      }
+    })
+    .catch(error => console.log(error))
+    .finally(() => setLoading(false));
+}, []);
+
   
   return (
     <>

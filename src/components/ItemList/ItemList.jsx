@@ -3,8 +3,9 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActions, CardActionArea, CardHeader, Grid } from '@mui/material';
+import { CardActions, CardActionArea, CardHeader, Grid, Chip } from '@mui/material';
 import { Link } from 'react-router-dom';
+import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
 
 
 const ItemList = ( props ) => {
@@ -31,6 +32,7 @@ const ItemList = ( props ) => {
             <Card key={card.id}
               sx={{
                 maxWidth: 270,
+                height: 650,
                 display: 'inline',
                 flexDirection: 'row',
                 m: 4,
@@ -54,17 +56,29 @@ const ItemList = ( props ) => {
                   <Typography gutterBottom variant="h6" component="div">
                     <h6><strong>${card.price}</strong> {card.cuota}</h6>
                   </Typography>
-
-                  <Typography variant="body2" color="text.secondary">
-                    Stock Disponible: {card.stock}
-                  </Typography>
+                { 
+                  card.stock < 5 ?
+                  <>
+                    <Typography variant="body2" color="text.secondary">
+                        Stock Disponible: {card.stock}
+                    </Typography>
+                    <Chip icon={<AccessAlarmOutlinedIcon />} label="Ultimas disponibles!!" color="primary" size="small"/>
+                  </>
+                  :
+                  <>
+                    <Typography variant="body2" color="text.secondary">
+                        Stock Disponible: {card.stock}
+                    </Typography>
+                    <br />
+                  </>  
+                }
                 </CardContent>
               </CardActionArea>
 
               <CardActions>
               </CardActions>
                   
-                  <Link to={`/ItemDetailContainer/${card.id}`} className="btn btn-secondary btn-sm my-3 "
+                  <Link to={`/ItemDetailContainer/${card.id}`} className="btn btn-secondary btn-sm my-1 "
                   >
                       See Product's Detail
                   </Link>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useCartContext } from '../../context/CartContext'
 import RemoveShoppingCartTwoToneIcon from '@mui/icons-material/RemoveShoppingCartTwoTone';
 import { Avatar, Button, Card, CardContent, Alert, Divider, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material'
@@ -10,21 +10,19 @@ import ProductionQuantityLimitsRoundedIcon from '@mui/icons-material/ProductionQ
 const Cart = () => {
 
   const { cartList, emptyCart, removeItem, getCartCount, getCartTotal, getItemTotal } = useCartContext()
-  
   const itemQty = getCartCount();
   
-
   return (
     <div
       style={{
-        backgroundImage: "radial-gradient(circle, #857e7e99, #c9dfdd, #cad9c3)",
+        backgroundImage: "radial-gradient(circle, #cccccc, #dddddd, #eeeeee)",
         fontSize: '1rem',
         paddingTop: '12vh',
-        paddingBottom: '100%',
+        paddingBottom: '12vh',
         width: '100%',
       }}>
 
-      { getCartCount() === 0 ?
+      { itemQty === 0 ?
         <Card sx={{ maxWidth: 950, margin: 'auto', padding: '10', bgcolor: '#ac6c6c99' }}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
@@ -121,7 +119,7 @@ const Cart = () => {
       </>
       }
       <br /> 
-      <Link to={'/'} className="btn btn-secondary btn-sm my-1">
+      <Link to={'/'} className="btn btn-secondary my-1">
         Go Back <i className="fas fa-arrow-rotate-left"></i>
       </Link>
     </div>

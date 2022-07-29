@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import ItemListContainer from '../itemList/ItemLIstContainer'
+import ItemListContainer from '../itemList/ItemListContainer'
 
 const Items = ( ) => {
 
